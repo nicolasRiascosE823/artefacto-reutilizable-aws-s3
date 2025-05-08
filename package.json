@@ -1,0 +1,40 @@
+{
+    "name": "s3-file-manager",
+    "version": "1.0.0",
+    "description": "Artefacto reutilizable para cargar y consultar archivos en AWS S3 usando arquitectura hexagonal",
+    "main": "dist/index.js",
+    "scripts": {
+      "build": "tsc",
+      "lint": "eslint 'src/**/*.ts'",
+      "lint:fix": "eslint 'src/**/*.ts' --fix",
+      "test": "jest test --silent --coverage --runInBand",
+      "test:dev": "jest test --coverage --runInBand",
+      "test:coverage": "jest --coverage"
+    },
+    "keywords": [
+      "s3",
+      "aws",
+      "typescript",
+      "jest",
+      "eslint",
+      "arquitectura-hexagonal"
+    ],
+    "author": "Tu Nombre",
+    "license": "MIT",
+    "dependencies": {
+      "aws-sdk": "^2.1481.0"
+    },
+    "devDependencies": {
+      "@types/jest": "^29.5.2",
+      "@typescript-eslint/eslint-plugin": "^7.0.0",
+      "@typescript-eslint/parser": "^7.0.0",
+      "eslint": "^8.56.0",
+      "eslint-config-prettier": "^9.0.0",
+      "eslint-plugin-import": "^2.29.0",
+      "jest": "^29.6.1",
+      "prettier": "^3.0.0",
+      "ts-jest": "^29.1.0",
+      "typescript": "^5.3.0"
+    }
+  }
+  
