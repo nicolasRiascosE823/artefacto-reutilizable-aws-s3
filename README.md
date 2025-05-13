@@ -98,3 +98,5 @@ Recomendaciones:
 - Configura timeouts apropiados
 
 - Implementa retry policies para errores transientes
+
+![Ejemplo](ruta.png)
