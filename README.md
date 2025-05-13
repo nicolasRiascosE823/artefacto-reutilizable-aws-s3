@@ -99,4 +99,4 @@ Recomendaciones:
 
 - Implementa retry policies para errores transientes
 
-![Ejemplo](ruta.png)
+![Ejemplo](flujo.png)
