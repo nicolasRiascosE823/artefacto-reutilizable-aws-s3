@@ -3,43 +3,6 @@
 **TypeScript**
 **Arquitectura Hexagonal**
 
-### Arquitectura
-📁 s3-artifact/
-├── 📁 src/
-│   ├── 📁 core/                  # Lógica de negocio
-│   │   ├── 📁 ports/             # Interfaces/Puertos
-│   │   │   └── 📄 StoragePort.ts # Interfaz para almacenamiento
-│   │   └── 📁 useCases/          # Casos de uso
-│   │       └── 📄 FileManager.ts # Servicio principal
-│   │
-│   ├── 📁 infrastructure/        # Implementaciones concretas
-│   │   └── 📁 aws/
-│   │       └── 📄 S3Adapter.ts   # Adaptador para AWS S3
-│   │
-│   └── 📁 shared/                # Utilidades compartidas
-│       ├── 📁 errors/
-│       │   └── 📄 StorageError.ts# Errores personalizados
-│       ├── 📁 logger/
-│       │   └── 📄 logger.ts      # Logger con Winston
-│       └── 📁 metrics/
-│           └── 📄 MetricsService.ts # Métricas de operaciones
-│
-├── 📁 tests/
-│   ├── 📁 unit/
-│   │   ├── 📄 FileManager.test.ts
-│   │   ├── 📄 S3Adapter.test.ts
-│   │   └── 📄 MetricsService.test.ts
-│   └── 📁 integration/
-│       └── 📄 s3Operations.test.ts
-│
-├── 📁 examples/                  # Ejemplos de uso
-│   └── 📄 basicUsage.ts
-│
-├── 📄 .eslintrc.js               # Configuración ESLint
-├── 📄 .prettierrc                # Configuración Prettier
-├── 📄 jest.config.js             # Configuración Jest
-├── 📄 tsconfig.json              # Configuración TypeScript
-└── 📄 package.json               # Dependencias
 
 ### 📌 Descripción
 Este proyecto proporciona una capa de abstracción reutilizable para interactuar con AWS S3, implementando Clean Code y Arquitectura Hexagonal. Permite:
