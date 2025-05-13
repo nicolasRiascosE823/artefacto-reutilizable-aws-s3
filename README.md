@@ -1,32 +1,100 @@
-# **S3 File Manager** - Artefacto Reutilizable para Node.js y AWS
+# **Artefacto Reutilizable AWS S3**
+**AWS S3**
+**TypeScript**
+**Arquitectura Hexagonal**
 
-## Descripción
+### 📌 Descripción
+Este proyecto proporciona una capa de abstracción reutilizable para interactuar con AWS S3, implementando Clean Code y Arquitectura Hexagonal. Permite:
 
-**S3 File Manager** es un artefacto reutilizable para gestionar archivos en AWS S3 de manera sencilla y eficiente. Implementado utilizando TypeScript, Node.js, AWS SDK y arquitectura hexagonal, este artefacto permite cargar y leer archivos de S3 de manera segura y flexible, siguiendo las mejores prácticas de desarrollo.
+✅ Operaciones básicas (upload/download/delete/list)
+✅ Manejo de errores estandarizado
+✅ Fácil integración en otros proyectos
+✅ 100% cobertura de pruebas
 
-Este artefacto está diseñado para ser fácilmente integrado en proyectos Node.js que requieren la interacción con Amazon S3 para subir y consultar archivos.
+### 🚀 Instalación
+````bash
+npm install artefacto-s3-reutilizable
+# o
+yarn add artefacto-s3-reutilizable
+````
 
-## Características
+### 💻 Uso Básico
 
-- **Cargar archivos**: Permite cargar archivos a S3 con un nombre y contenido especificados.
-- **Leer archivos**: Permite leer archivos almacenados en S3.
-- **Arquitectura hexagonal**: Separación clara entre la lógica de negocio y la infraestructura.
-- **Modularidad**: Fácil de integrar en cualquier proyecto.
-- **Pruebas unitarias**: Cubre el 100% de las pruebas con Jest.
-- **Cumple con las mejores prácticas**: Incluye ESLint, buenas prácticas de programación y estructura de código limpio.
+````
+import { S3Adapter, FileManager } from 'artefacto-s3-reutilizable';
 
-## Requisitos
+// 1. Configuración
+const s3Adapter = new S3Adapter(process.env.AWS_BUCKET!, process.env.AWS_REGION!);
+const fileManager = new FileManager(s3Adapter);
 
-- Node.js >= v16
-- AWS SDK para JavaScript
-- Un bucket de S3 en AWS
-- Cuenta de AWS con permisos adecuados para interactuar con S3
+// 2. Subir archivo
+await fileManager.uploadFile(Buffer.from('contenido'), 'ruta/archivo.txt');
 
-## Instalación
+// 3. Descargar archivo
+const contenido = await fileManager.downloadFile('ruta/archivo.txt');
 
-### 1. Instalación vía NPM
+// 4. Listar archivos
+const archivos = await fileManager.listFiles('ruta/');
 
-Si planeas integrar el artefacto en un proyecto, puedes instalarlo directamente desde NPM (o desde tu repositorio privado si así lo deseas).
+// 5. Eliminar archivo
+await fileManager.deleteFile('ruta/archivo.txt');
+````
+### Estructura del Código
+- ✅  **Core (Lógica de Negocio)**
+  - **FileManager**: Orquesta las operaciones
+  - **StoragePort**: Interfaz para implementaciones de almacenamiento
 
-```bash
-npm install s3-file-manager-package
+- ✅  **Infrastructure**
+  - **S3Adapter**: Implementación concreta para AWS S3
+  - **logger**: Configuración centralizada de logging
+  - **MetricsService**: Tracking de operaciones
+
+- ✅  **Shared**
+  - **StorageError**: Errores personalizados
+  - Tipos y utilidades compartidas
+### 🧪 Testing
+````
+# Ejecutar pruebas unitarias
+npm run test
+
+# Pruebas desarrollo
+npm run test:dev
+````
+### 🛠 Métodos Disponibles
+FileManager
+
+| Metodo | Parámetros | Retorno | Descripción |
+|--|--|--|--|
+| `uploadFile` | `file: Buffer, key: string` | `Promise<string>` | Sube archivo a S3 |
+| `downloadFile` | `key: string` | `Promise<Buffer>` | `Descarga archivo` |
+| `deleteFile` | `key: string` | `Promise<void>` | `Elimina archivo` |
+| `listFiles` | `prefix?: string` | `Promise<string[]>` | `Lista archivos` |
+
+### 🚨 Manejo de Errores
+El proyecto usa StorageError con:
+
+- Mensaje descriptivo
+
+- Código único de error
+
+- Metadatos adicionales
+
+Ejemplo de captura:
+````
+try {
+  await fileManager.uploadFile(buffer, key);
+} catch (error) {
+  if (error instanceof StorageError) {
+    console.error(`Error ${error.code}:`, error.message);
+  }
+}
+````
+
+### 🌐 Ambiente de Producción
+Recomendaciones:
+
+- Usa IAM Roles en lugar de credenciales hardcodeadas
+
+- Configura timeouts apropiados
+
+- Implementa retry policies para errores transientes

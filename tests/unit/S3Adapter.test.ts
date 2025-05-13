@@ -170,4 +170,5 @@ describe('S3Adapter', () => {
         .toThrow('Test: undefined');
     });
   });
+  
 });

@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.490.0",
+    "@aws-sdk/credential-providers": "^3.808.0",
     "@aws-sdk/util-stream-node": "^3.370.0",
     "dotenv": "^16.3.1",
     "winston": "^3.11.0",
