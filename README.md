@@ -99,4 +99,5 @@ Recomendaciones:
 
 - Implementa retry policies para errores transientes
 
+### 🔄 Flujo de Operaciones
 ![Ejemplo](flujo.png)
