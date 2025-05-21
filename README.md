@@ -19,6 +19,13 @@ npm install artefacto-s3-reutilizable
 yarn add artefacto-s3-reutilizable
 ````
 
+### Dependencias
+✅ aws-sdk/cliente-s3 : 3.490.0
+✅ aws-sdk/credential-providers : 3.808.0 
+✅ aws-sdk/util-stream-node : 3.370.0 
+✅ winston : 3.11.0
+✅ zod : 3.22.4
+
 ### 💻 Uso Básico
 
 ````
