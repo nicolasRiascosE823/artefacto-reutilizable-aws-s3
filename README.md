@@ -7,10 +7,10 @@
 ### 📌 Descripción
 Este proyecto proporciona una capa de abstracción reutilizable para interactuar con AWS S3, implementando Clean Code y Arquitectura Hexagonal. Permite:
 
-✅ Operaciones básicas (upload/download/delete/list)
-✅ Manejo de errores estandarizado
-✅ Fácil integración en otros proyectos
-✅ 100% cobertura de pruebas
+- ✅ Operaciones básicas (upload/download/delete/list)
+- ✅ Manejo de errores estandarizado
+- ✅ Fácil integración en otros proyectos
+- ✅ 100% cobertura de pruebas
 
 ### 🚀 Instalación
 ````bash
@@ -18,6 +18,13 @@ npm install artefacto-s3-reutilizable
 # o
 yarn add artefacto-s3-reutilizable
 ````
+
+### Dependencias
+- ✅ aws-sdk/cliente-s3 : 3.490.0
+- ✅ aws-sdk/credential-providers : 3.808.0 
+- ✅ aws-sdk/util-stream-node : 3.370.0 
+- ✅ winston : 3.11.0
+- ✅ zod : 3.22.4
 
 ### 💻 Uso Básico
 
